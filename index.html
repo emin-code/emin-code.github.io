@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hatim Duası</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #34495e;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --border-color: #bdc3c7;
+            --text-color: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .main-description {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .description-text {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .description-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .ayetler {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .ayet {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .ayet:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .arapca {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            line-height: 2;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            direction: rtl;
+        }
+
+        .turkce {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .sure {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .hatim-bilgileri, .hatim-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .radio-label input[type="radio"] {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .main-description {
+                font-size: 1.2rem;
+            }
+
+            .arapca {
+                font-size: 1.5rem;
+            }
+
+            .turkce {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-title">
+            <h1>Sevdiklerimiz İçin Hatim Duası</h1>
+            <p class="main-description">"Ölüm bir son değil, yeni bir başlangıçtır."</p>
+            <div class="description-text">
+                <p>Sevdiklerimizin ruhu için yapacağınız her dua, okuyacağınız her hatim onların ahiretine bir nur olacaktır.</p>
+                <p>Peygamber Efendimiz (s.a.v) buyuruyor ki: "İnsan ölünce üç şey dışında ameli kesilir: Sadaka-i câriye, faydalı ilim ve kendisine dua eden hayırlı evlat."</p>
+            </div>
+        </div>
+
+        <div class="ayetler">
+            <div class="ayet">
+                <p class="arapca">كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ ثُمَّ إِلَيْنَا تُرْجَعُونَ</p>
+                <p class="turkce">"Her can ölümü tadacaktır. Sonunda bize döndürüleceksiniz."</p>
+                <p class="sure">Ankebût Suresi, 57. Ayet</p>
+            </div>
+
+            <div class="ayet">
+                <p class="arapca">إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
+                <p class="turkce">"Şüphesiz biz Allah'a aidiz ve şüphesiz O'na döneceğiz."</p>
+                <p class="sure">Bakara Suresi, 156. Ayet</p>
+            </div>
+        </div>
+
+        <form action="https://formsubmit.co/savasemin099@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Yeni Hatim Talebi">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://siteniz.com/tesekkurler.html">
+
+            <div class="hatim-bilgileri">
+                <h2>Hatim İndirilecek Kişi Bilgileri</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="deceased-name">Hatim İndirilecek Kişinin Adı:</label>
+                        <input type="text" id="deceased-name" name="deceased_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deceased-surname">Soyadı:</label>
+                        <input type="text" id="deceased-surname" name="deceased_surname" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Cinsiyet:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="erkek" required>
+                            <span class="radio-text">Erkek</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="kadin" required>
+                            <span class="radio-text">Kadın</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dob">Doğum Tarihi:</label>
+                        <input type="date" id="dob" name="dob">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dod">Vefat Tarihi:</label>
+                        <input type="date" id="dod" name="dod" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hatim-form">
+                <h2>İletişim Bilgileri</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="user-name">Adınız:</label>
+                        <input type="text" id="user-name" name="user_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-surname">Soyadınız:</label>
+                        <input type="text" id="user-surname" name="user_surname" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Cinsiyet:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="user_gender" value="erkek" required>
+                            <span class="radio-text">Erkek</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="user_gender" value="kadin" required>
+                            <span class="radio-text">Kadın</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="user-phone">Telefon Numarası:</label>
+                        <input type="tel" id="user-phone" name="user_phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-email">E-posta:</label>
+                        <input type="email" id="user-email" name="user_email" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hatim-form">
+                <h2>Hatim Detayları</h2>
+
+                <div class="form-group">
+                    <label for="notes">Özel Notlar veya İstekler:</label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Varsa özel isteklerinizi buraya yazabilirsiniz..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start-date">Başlangıç Tarihi:</label>
+                        <input type="date" id="start-date" name="start_date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="completion-date">Bitiş Tarihi:</label>
+                        <input type="date" id="completion-date" name="completion_date" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Formu Gönder</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html> 
