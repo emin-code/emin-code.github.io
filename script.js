@@ -53,15 +53,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     certificateSelect.addEventListener('change', function() {
+        const selectedService = serviceSelect.value;
+        
         if(this.value === 'evet') {
+            // Adres ve fiyat alanlarını göster
             addressGroup.style.display = 'block';
+            priceInfo.style.display = 'block';
             document.getElementById('address').required = true;
+            
+            // Seçilen hizmete göre fiyatı güncelle
+            const price = selectedService === 'hatim' ? '350' : '75';
+            document.getElementById('certificatePrice').textContent = price;
         } else {
+            // Adres ve fiyat alanlarını gizle
             addressGroup.style.display = 'none';
+            priceInfo.style.display = 'none';
             document.getElementById('address').required = false;
         }
     });
 
+    // Hizmet türü değiştiğinde fiyatı güncelle
     serviceSelect.addEventListener('change', function() {
         if(certificateSelect.value === 'evet') {
             const price = this.value === 'hatim' ? '350' : '75';
