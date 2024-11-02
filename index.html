@@ -181,16 +181,17 @@
                     </select>
                 </div>
 
-                <!-- Fiyat bilgisi (başlangıçta gizli) -->
-                <div id="priceInfo" style="display: none;" class="price-box">
-                    <p>Sertifika Ücreti: <span id="certificatePrice">0</span> TL</p>
-                    <small>Not: KUR'AN-I KERİM okuma hizmetimiz tamamen ücretsizdir.</small>
-                </div>
-
-                <!-- Adres alanı (başlangıçta gizli) -->
-                <div id="addressGroup" style="display: none;">
-                    <label for="address">Sertifika Teslimat Adresi:</label>
-                    <textarea id="address" name="address" rows="3"></textarea>
+                <!-- Sertifika fiyatı ve adres (başlangıçta gizli) -->
+                <div id="certificateDetails" style="display: none;">
+                    <div class="price-box">
+                        <p>Sertifika Ücreti: <span id="certificatePrice">0</span> TL</p>
+                        <small>Not: KUR'AN-I KERİM okuma hizmetimiz tamamen ücretsizdir.</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Sertifika Teslimat Adresi:</label>
+                        <textarea id="address" name="address" rows="3"></textarea>
+                    </div>
                 </div>
 
                 <button type="submit">Gönder</button>
