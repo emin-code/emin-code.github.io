@@ -92,36 +92,49 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('serviceForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
+        // Form verilerini al
         const service = serviceSelect.value;
         const certificate = certificateSelect.value;
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
         const forName = document.getElementById('forName').value;
         const motherName = document.getElementById('motherName').value;
         const fatherName = document.getElementById('fatherName').value;
         const birthDate = document.getElementById('birthDate').value;
         const deathDate = document.getElementById('deathDate').value;
         
-        let message = `Form başarıyla gönderildi.\n\n` +
-                     `Okunacak Kişi: ${forName}\n` +
-                     `Anne Adı: ${motherName}\n` +
-                     `Baba Adı: ${fatherName}\n` +
-                     `Doğum Tarihi: ${birthDate}\n` +
-                     `Vefat Tarihi: ${deathDate}\n\n`;
+        // WhatsApp mesajını oluştur
+        let whatsappMessage = 
+            `*Yeni Hatim/Yasin Talebi*\n\n` +
+            `Talep Eden: ${name}\n` +
+            `Telefon: ${phone}\n` +
+            `Hizmet: ${service === 'hatim' ? 'Hatm-i Şerif' : 'Yasin-i Şerif'}\n` +
+            `Okunacak Kişi: ${forName}\n` +
+            `Ölen Kişinin Anne Adı: ${motherName}\n` +
+            `Ölen Kişinin Baba Adı: ${fatherName}\n` +
+            `Doğum Tarihi: ${birthDate}\n` +
+            `Vefat Tarihi: ${deathDate}\n`;
 
         if (certificate === 'evet') {
             const price = service === 'hatim' ? '350' : '75';
-            const serviceType = service === 'hatim' ? 'Hatm-i Şerif' : 'Yasin-i Şerif';
             const address = document.getElementById('address').value;
-            
-            message += `${serviceType} Sertifika Ücreti: ${price} TL\n` +
-                      `Teslimat Adresi: ${address}\n\n`;
+            whatsappMessage += 
+                `\nSertifika: Evet\n` +
+                `Sertifika Ücreti: ${price} TL\n` +
+                `Teslimat Adresi: ${address}`;
         } else {
-            message += 'Sertifika talep edilmemiştir.\n\n';
+            whatsappMessage += `\nSertifika: Hayır`;
         }
 
-        message += `Not: KUR'AN-I KERİM okuma hizmetimiz tamamen ücretsizdir.\n` +
-                  `En kısa sürede sizinle iletişime geçeceğiz.`;
-
-        alert(message);
+        // Kullanıcıya başarılı mesajını göster
+        alert('Form başarıyla gönderildi. WhatsApp\'a yönlendiriliyorsunuz.');
+        
+        // WhatsApp'a yönlendir
+        const phoneNumber = '905384342356'; // Buraya kendi telefon numaranızı yazın (başında 90 olacak)
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(whatsappUrl);
+        
+        // Formu kapat ve temizle
         modal.style.display = 'none';
         this.reset();
     });
