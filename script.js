@@ -53,30 +53,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     certificateSelect.addEventListener('change', function() {
-        const selectedService = serviceSelect.value;
+        const details = document.getElementById('certificateDetails');
+        const address = document.getElementById('address');
+        const price = document.getElementById('certificatePrice');
         
         if(this.value === 'evet') {
-            // Adres ve fiyat alanlarını göster
-            addressGroup.style.display = 'block';
-            priceInfo.style.display = 'block';
-            document.getElementById('address').required = true;
-            
-            // Seçilen hizmete göre fiyatı güncelle
-            const price = selectedService === 'hatim' ? '350' : '75';
-            document.getElementById('certificatePrice').textContent = price;
+            details.style.display = 'block';
+            address.required = true;
+            // Seçili hizmete göre fiyat
+            price.textContent = serviceSelect.value === 'hatim' ? '350' : '75';
         } else {
-            // Adres ve fiyat alanlarını gizle
-            addressGroup.style.display = 'none';
-            priceInfo.style.display = 'none';
-            document.getElementById('address').required = false;
+            details.style.display = 'none';
+            address.required = false;
         }
     });
 
-    // Hizmet türü değiştiğinde fiyatı güncelle
+    // Hizmet değişince fiyatı güncelle
     serviceSelect.addEventListener('change', function() {
         if(certificateSelect.value === 'evet') {
-            const price = this.value === 'hatim' ? '350' : '75';
-            document.getElementById('certificatePrice').textContent = price;
+            document.getElementById('certificatePrice').textContent = 
+                this.value === 'hatim' ? '350' : '75';
         }
     });
 
