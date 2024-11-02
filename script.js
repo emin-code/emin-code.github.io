@@ -55,14 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
     certificateSelect.addEventListener('change', function() {
         if(this.value === 'evet') {
             addressGroup.style.display = 'block';
-            priceInfo.style.display = 'block';
-            
-            const selectedService = serviceSelect.value;
-            const price = selectedService === 'hatim' ? '350' : '75';
-            document.getElementById('certificatePrice').textContent = price;
+            document.getElementById('address').required = true;
         } else {
             addressGroup.style.display = 'none';
-            priceInfo.style.display = 'none';
+            document.getElementById('address').required = false;
         }
     });
 
