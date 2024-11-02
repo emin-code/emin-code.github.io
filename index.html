@@ -125,7 +125,9 @@
             <h3>Hatim Hizmeti Talep Formu</h3>
             
             <form id="serviceForm" action="https://formsubmit.co/savasemin099@gmail.com" method="POST">
-                <!-- Temel Bilgiler -->
+                <input type="hidden" name="_subject" value="Yeni Hatim/Yasin Talebi">
+                <input type="hidden" name="_captcha" value="false">
+                
                 <div class="form-group">
                     <label for="name">Adınız Soyadınız:</label>
                     <input type="text" id="name" name="name" required>
@@ -179,17 +181,12 @@
                     </select>
                 </div>
 
-                <!-- Adres bölümü (başlangıçta gizli) -->
-                <div id="addressGroup" class="form-group" style="display: none;">
+                <div id="addressGroup" style="display: none;">
                     <label for="address">Sertifika Teslimat Adresi:</label>
                     <textarea id="address" name="address" rows="3"></textarea>
                 </div>
 
-                <!-- FormSubmit için gerekli gizli alanlar -->
-                <input type="hidden" name="_subject" value="Yeni Hatim/Yasin Talebi">
-                <input type="hidden" name="_captcha" value="false">
-
-                <button type="submit" class="submit-btn">Gönder</button>
+                <button type="submit">Gönder</button>
             </form>
         </div>
     </div>
