@@ -124,7 +124,7 @@
             <span class="close-btn">&times;</span>
             <h3>Hatim Hizmeti Talep Formu</h3>
             
-            <form id="serviceForm">
+            <form id="serviceForm" action="https://formsubmit.co/your-savasemin099@gmail.com" method="POST">
                 <!-- Temel Bilgiler -->
                 <div class="form-group">
                     <label for="name">Adınız Soyadınız:</label>
@@ -192,6 +192,12 @@
                     <label for="address">Sertifika Teslimat Adresi:</label>
                     <textarea id="address" name="address" rows="3" required></textarea>
                 </div>
+
+                <!-- FormSubmit için gerekli gizli alanlar -->
+                <input type="hidden" name="_subject" value="Yeni Hatim/Yasin Talebi">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://emin-code.github.io/tesekkurler.html">
 
                 <button type="submit" class="submit-btn">Gönder</button>
             </form>
