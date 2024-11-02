@@ -53,14 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     certificateSelect.addEventListener('change', function() {
-        const selectedService = serviceSelect.value;
-        const addressGroup = document.getElementById('addressGroup');
-        const priceInfo = document.getElementById('priceInfo');
-        
         if(this.value === 'evet') {
             addressGroup.style.display = 'block';
             priceInfo.style.display = 'block';
             
+            const selectedService = serviceSelect.value;
             const price = selectedService === 'hatim' ? '350' : '75';
             document.getElementById('certificatePrice').textContent = price;
         } else {
@@ -92,44 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('serviceForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Form verilerini al
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const service = document.getElementById('service').value;
-        const forName = document.getElementById('forName').value;
-        const motherName = document.getElementById('motherName').value;
-        const fatherName = document.getElementById('fatherName').value;
-        const birthDate = document.getElementById('birthDate').value;
-        const deathDate = document.getElementById('deathDate').value;
-        const certificate = document.getElementById('certificate').value;
-        
-        // WhatsApp mesajı oluştur
-        let message = 
-            `🕌 *YENİ TALEBİNİZ*\n\n` +
-            `İsim: ${name}\n` +
-            `Tel: ${phone}\n` +
-            `Hizmet: ${service === 'hatim' ? 'Hatm-i Şerif' : 'Yasin-i Şerif'}\n` +
-            `Kimin için: ${forName}\n` +
-            `Anne Adı: ${motherName}\n` +
-            `Baba Adı: ${fatherName}\n` +
-            `Doğum: ${birthDate}\n` +
-            `Vefat: ${deathDate}\n`;
-
-        if (certificate === 'evet') {
-            const price = service === 'hatim' ? '350' : '75';
-            const address = document.getElementById('address').value;
-            message += 
-                `\n💫 *SERTİFİKA BİLGİLERİ*\n` +
-                `Ücret: ${price} TL\n` +
-                `Adres: ${address}`;
-        }
-
-        // WhatsApp'a yönlendir
-        const tel = '905384342356';
-        window.open(`https://wa.me/${tel}?text=${encodeURIComponent(message)}`);
-        
+        // Form normal şekilde submit olacak
         // Form'u kapat
         modal.style.display = 'none';
-        this.reset();
     });
 }); 
