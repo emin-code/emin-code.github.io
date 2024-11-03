@@ -92,6 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('serviceForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
+        // Sertifika seçili ve fiyat varsa gizli input'a ekle
+        if(certificateSelect.value === 'evet') {
+            const price = document.getElementById('certificatePrice').textContent;
+            document.getElementById('hiddenPrice').value = price + ' TL';
+        }
+        
         // Form normal şekilde submit olacak
         // Form'u kapat
         modal.style.display = 'none';
