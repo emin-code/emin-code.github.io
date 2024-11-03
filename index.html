@@ -97,15 +97,53 @@
 
         <section class="faq">
             <div class="container">
-                <h2>Sıkça Sorulan Sorular</h2>
-                <div class="faq-list">
+                <h2>
+                    ☪️ Sık Sorulan Sorular ☪️
+                </h2>
+                
+                <div class="faq-grid">
                     <div class="faq-item">
-                        <h3><i class="fas fa-question-circle"></i> Hizmet süreci nasıl işliyor?</h3>
-                        <p>Hatim bitiminde talep edilirse hatm-i şerifin okunduğunu belirten sertifikanız tarafınıza iletilir.</p>
+                        <h3>
+                            <span class="islamic-symbol">۞</span>
+                            Hizmet süreci nasıl işliyor?
+                            <span class="islamic-symbol">۞</span>
+                        </h3>
+                        <div class="faq-content">
+                            <div class="process-box">
+                                <p>1. Form doldurulup gönderilir</p>
+                                <p>2. Hatim/Yasin duası hemen başlatılır</p>
+                                <p>3. Hatim tamamlandığında tarafınıza bilgi verilir</p>
+                                <p>4. Sertifika talep edilmişse adresinize gönderilir</p>
+                                <div class="important-note">
+                                    <span class="islamic-symbol">✧</span>
+                                    <strong>Önemli Not:</strong> Hatim okuma süresi, hocalarımızın yoğunluğuna göre değişmekle birlikte 15 gün ile 30 gün arasında tamamlanır.
+                                    <span class="islamic-symbol">✧</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="faq-item">
-                        <h3><i class="fas fa-question-circle"></i> Ödeme seçenekleri nelerdir?</h3>
-                        <p>Gelen sertifika ücretini kapıda ödeme yapabilirsiniz. Tüm ödemeleriniz %100 güvence altındadır.</p>
+                        <h3>
+                            <span class="islamic-symbol">۞</span>
+                            Ödeme seçenekleri nelerdir?
+                            <span class="islamic-symbol">۞</span>
+                        </h3>
+                        <div class="faq-content">
+                            <div class="process-box">
+                                <p class="free-service">
+                                    <span class="islamic-symbol">✧</span>
+                                    <strong>KUR'AN-I KERİM okuma hizmetimiz tamamen ücretsizdir.</strong>
+                                    <span class="islamic-symbol">✧</span>
+                                </p>
+                                <p>Sertifika talep edilmesi durumunda:</p>
+                                <ul>
+                                    <li>Kapıda ödeme imkanı</li>
+                                    <li>%100 güvenli teslimat</li>
+                                    <li>Şeffaf kargo takibi</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -293,31 +331,135 @@ header {
 }
 
 .faq {
-    background: rgba(255,249,230,0.8);
-    padding: 50px 0;
+    padding: 60px 0;
+    background: #f9f9f9;
+    background-image: url('path/to/islamic-pattern.png'); /* İslami desen ekleyebilirsiniz */
 }
 
 .faq h2 {
-    font-family: 'Amiri', serif;
-    color: #8B4513;
-    font-size: 42px;
     text-align: center;
+    color: #333;
     margin-bottom: 40px;
-    text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.3);
+    font-size: 36px;
+    position: relative;
+    padding: 20px 0;
+}
+
+.islamic-symbol {
+    color: #4CAF50;
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+.faq-grid {
+    display: grid;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .faq-item {
-    border: 3px solid #d4af37;
+    background: white;
     border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 .faq-item h3 {
-    color: #8B4513;
-    font-family: 'Amiri', serif;
+    color: #2c3e50;
     font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #4CAF50;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.process-box {
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    padding: 25px;
+    background: #f8f9fa;
+    text-align: center;
+    position: relative;
+    margin: 20px 0;
+}
+
+.process-box:before,
+.process-box:after {
+    content: "۞";
+    position: absolute;
+    color: #4CAF50;
+    font-size: 20px;
+}
+
+.process-box:before {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.process-box:after {
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.faq-content {
+    color: #333;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+.faq-content p {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.faq-content ul {
+    margin: 15px auto;
+    padding-left: 0;
+    list-style-position: inside;
+    text-align: center;
+}
+
+.faq-content li {
+    margin-bottom: 12px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.important-note {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.free-service {
+    color: #155724;
+    background: #d4edda;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Mobil uyumluluk */
+@media screen and (max-width: 768px) {
+    .islamic-symbol {
+        font-size: 20px;
+    }
+
+    .faq-item h3 {
+        font-size: 22px;
+    }
+
+    .process-box {
+        padding: 20px 15px;
+    }
 }
 
 footer {
