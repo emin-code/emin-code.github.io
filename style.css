@@ -727,3 +727,37 @@ header h1 {
         padding: 10px;
     }
 }
+
+.thank-you-page {
+    text-align: center;
+    padding: 50px 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+}
+
+.thank-you-page h1 {
+    color: #45a049;
+    margin-bottom: 20px;
+}
+
+.thank-you-page p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.btn-back:hover {
+    background: #45a049;
+}
