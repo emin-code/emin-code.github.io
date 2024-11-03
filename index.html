@@ -118,32 +118,31 @@
         </div>
     </footer>
 
-    <!-- Hizmet butonu tıklandığında açılacak form modal -->
+    <!-- Modal -->
     <div id="serviceModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h3>Hatim Hizmeti Talep Formu</h3>
             
-            <form id="serviceForm" action="https://formsubmit.co/el/confirm/savasemin099@gmail.com" method="POST">
-                <!-- FormSubmit için gerekli alanlar -->
+            <form id="serviceForm" action="https://formsubmit.co/savasemin099@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Yeni Hatim/Yasin Talebi">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://yenihatim.netlify.app">
                 
-                <!-- Form alanları -->
+                <!-- Temel Bilgiler -->
                 <div class="form-group">
-                    <label for="name">Adınız Soyadınız:</label>
-                    <input type="text" id="name" name="name" required>
+                    <label>Adınız Soyadınız:</label>
+                    <input type="text" name="Adı Soyadı" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Telefon Numaranız:</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <label>Telefon Numaranız:</label>
+                    <input type="tel" name="Telefon" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="service">Hizmet Türü:</label>
-                    <select id="service" name="service" required>
+                    <label>Hizmet Türü:</label>
+                    <select name="Hizmet" id="service" required>
                         <option value="">Seçiniz</option>
                         <option value="hatim">Hatm-i Şerif</option>
                         <option value="yasin">Yasin-i Şerif</option>
@@ -151,54 +150,50 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="forName">Hatim/Yasin Kimin İçin Okunacak:</label>
-                    <input type="text" id="forName" name="forName" required>
+                    <label>Hatim/Yasin Kimin İçin Okunacak:</label>
+                    <input type="text" name="Okunacak Kişi" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="motherName">Ölen Kişinin Anne Adı:</label>
-                    <input type="text" id="motherName" name="motherName" required>
+                    <label>Ölen Kişinin Anne Adı:</label>
+                    <input type="text" name="Anne Adı" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="fatherName">Ölen Kişinin Baba Adı:</label>
-                    <input type="text" id="fatherName" name="fatherName" required>
+                    <label>Ölen Kişinin Baba Adı:</label>
+                    <input type="text" name="Baba Adı" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="birthDate">Doğum Tarihi:</label>
-                    <input type="date" id="birthDate" name="birthDate" required>
+                    <label>Doğum Tarihi:</label>
+                    <input type="date" name="Doğum Tarihi" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="deathDate">Vefat Tarihi:</label>
-                    <input type="date" id="deathDate" name="deathDate" required>
+                    <label>Vefat Tarihi:</label>
+                    <input type="date" name="Vefat Tarihi" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="certificate">Sertifika İster misiniz?</label>
-                    <select id="certificate" name="certificate" required>
+                    <label>Sertifika İster misiniz?</label>
+                    <select name="Sertifika" id="certificate" required>
                         <option value="">Seçiniz</option>
                         <option value="evet">Evet</option>
                         <option value="hayir">Hayır</option>
                     </select>
                 </div>
 
-                <!-- Sertifika fiyatı ve adres (başlangıçta gizli) -->
-                <div id="certificateDetails" style="display: none;">
-                    <div class="price-box">
-                        <p>Sertifika Ücreti: <span id="certificatePrice">0</span> TL</p>
+                <div id="certificateDetails" style="display:none">
+                    <div class="form-group">
+                        <p><b>Sertifika Ücreti: <span id="certificatePrice">0</span> TL</b></p>
                         <small>Not: KUR'AN-I KERİM okuma hizmetimiz tamamen ücretsizdir.</small>
                     </div>
                     
                     <div class="form-group">
-                        <label for="address">Sertifika Teslimat Adresi:</label>
-                        <textarea id="address" name="address" rows="3"></textarea>
+                        <label>Sertifika Teslimat Adresi:</label>
+                        <textarea name="Adres" rows="3"></textarea>
                     </div>
                 </div>
-
-                <!-- Sertifika fiyatını form verisi olarak ekleyelim -->
-                <input type="hidden" name="Sertifika Ücreti" id="hiddenPrice">
 
                 <button type="submit">Gönder</button>
             </form>
@@ -206,113 +201,43 @@
     </div>
 
     <script>
-        // Modal işlemleri için JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('serviceModal');
-            const btns = document.querySelectorAll('.btn-order');
-            const closeBtn = document.querySelector('.close-btn');
-            const serviceSelect = document.getElementById('service');
-            const certificateSelect = document.getElementById('certificate');
-            const priceInfo = document.getElementById('priceInfo');
-            const certificatePrice = document.getElementById('certificatePrice');
-
-            // Hizmet butonlarına tıklandığında
-            btns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    modal.style.display = 'block';
-                    
-                    // Hangi hizmet seçildi
-                    const service = this.parentElement.querySelector('h3').textContent;
-                    if(service.includes('Hatm')) {
-                        serviceSelect.value = 'hatim';
-                        certificatePrice.textContent = '350';
-                    } else if(service.includes('Yasin')) {
-                        serviceSelect.value = 'yasin';
-                        certificatePrice.textContent = '75';
-                    }
-                    
-                    // Varsayılan olarak sertifika "Evet" seçili gelsin
-                    certificateSelect.value = 'evet';
-                    // Fiyat bilgisini hemen göster
-                    priceInfo.style.display = 'block';
-                });
-            });
-
-            function updatePrice() {
-                const service = serviceSelect.value;
-                const certificate = certificateSelect.value;
-
-                if (certificate === 'evet') {
-                    priceInfo.style.display = 'block';
-                    if (service === 'hatim') {
-                        certificatePrice.textContent = '350';
-                    } else if (service === 'yasin') {
-                        certificatePrice.textContent = '75';
-                    }
-                } else {
-                    priceInfo.style.display = 'none';
-                    certificatePrice.textContent = '0';
-                }
+        document.getElementById('certificate').onchange = function() {
+            var details = document.getElementById('certificateDetails');
+            var price = document.getElementById('certificatePrice');
+            var service = document.getElementById('service').value;
+            
+            if(this.value === 'evet') {
+                details.style.display = 'block';
+                price.innerHTML = service === 'hatim' ? '350' : '75';
+            } else {
+                details.style.display = 'none';
+                price.innerHTML = '0';
             }
+        };
 
-            certificateSelect.addEventListener('change', updatePrice);
-            serviceSelect.addEventListener('change', updatePrice);
+        // Modal elementlerini seç
+        var modal = document.getElementById('serviceModal');
+        var btns = document.getElementsByClassName('btn-order');
+        var span = document.getElementsByClassName('close-btn')[0];
 
-            // Çarpıya tıklandığında modalı kapat
-            closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
+        // Tüm butonlara tıklama olayı ekle
+        for(var i = 0; i < btns.length; i++) {
+            btns[i].onclick = function() {
+                modal.style.display = "block";
+            }
+        }
 
-            // Modal dışına tıklandığında kapat
-            window.addEventListener('click', function(e) {
-                if (e.target == modal) {
-                    modal.style.display = 'none';
-                }
-            });
+        // Çarpıya tıklayınca kapat
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
 
-            // Form gönderildiğinde
-            document.getElementById('serviceForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const service = serviceSelect.value;
-                const certificate = certificateSelect.value;
-                let message = '';
-
-                if (certificate === 'evet') {
-                    const price = service === 'hatim' ? '350' : '75';
-                    const serviceType = service === 'hatim' ? 'Hatm-i Şerif' : 'Yasin-i Şerif';
-                    const forName = document.getElementById('forName').value;
-                    const motherName = document.getElementById('motherName').value;
-                    const fatherName = document.getElementById('fatherName').value;
-                    const birthDate = document.getElementById('birthDate').value;
-                    const deathDate = document.getElementById('deathDate').value;
-                    const address = document.getElementById('address').value;
-                    
-                    message = `Form başarıyla gönderildi.\n\n` +
-                             `${serviceType} Sertifika Ücreti: ${price} TL\n` +
-                             `Okunacak Kişi: ${forName}\n` +
-                             `Anne Adı: ${motherName}\n` +
-                             `Baba Adı: ${fatherName}\n` +
-                             `Doğum Tarihi: ${birthDate}\n` +
-                             `Vefat Tarihi: ${deathDate}\n` +
-                             `Teslimat Adresi: ${address}\n\n` +
-                             `Not: KUR'AN-I KERİM okuma hizmetimiz tamamen ücretsizdir.\n` +
-                             `En kısa sürede sizinle iletişime geçeceğiz.`;
-                } else {
-                    const forName = document.getElementById('forName').value;
-                    message = 'Form başarıyla gönderildi.\n\n' +
-                             `Okunacak Kişi: ${forName}\n` +
-                             'Sertifika talep edilmemiştir.\n' +
-                             'Not: KUR\'AN-I KERİM okuma hizmetimiz tamamen ücretsizdir.\n' +
-                             'En kısa sürede sizinle iletişime geçeceğiz.';
-                }
-
-                alert(message);
-                modal.style.display = 'none';
-                this.reset();
-            });
-        });
+        // Dışarı tıklayınca kapat
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
