@@ -124,11 +124,11 @@
             <span class="close-btn">&times;</span>
             <h3>Hatim Hizmeti Talep Formu</h3>
             
-            <form id="serviceForm" action="https://formsubmit.co/savasemin099@gmail.com" method="POST">
-                <!-- FormSubmit için gerekli gizli alanlar -->
+            <form id="serviceForm" action="https://formsubmit.co/el/confirm/savasemin099@gmail.com" method="POST">
+                <!-- FormSubmit için gerekli alanlar -->
                 <input type="hidden" name="_subject" value="Yeni Hatim/Yasin Talebi">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://yenihatim.netlify.app">
+                <input type="hidden" name="_template" value="table">
                 
                 <!-- Form alanları -->
                 <div class="form-group">
@@ -196,6 +196,9 @@
                         <textarea id="address" name="address" rows="3"></textarea>
                     </div>
                 </div>
+
+                <!-- Sertifika fiyatını form verisi olarak ekleyelim -->
+                <input type="hidden" name="Sertifika Ücreti" id="hiddenPrice">
 
                 <button type="submit">Gönder</button>
             </form>
